@@ -32,7 +32,7 @@ boot2docker_shellinit <- function() {
   }
 }
 
-docker_build <- function(path, dockerfile, tagname, use_cache=TRUE) {
+docker_build <- function(path, dockerfile, use_cache=TRUE) {
   if (Sys.info()[["sysname"]] == "Darwin") {
     ## TODO: Also windows, apparently.
     boot2docker_shellinit()
@@ -42,7 +42,7 @@ docker_build <- function(path, dockerfile, tagname, use_cache=TRUE) {
   ## to be ".." in many cases.
   args <- c("build",
              dockerfile,
-            "-t", tagname,
+            "-t",
             if (!use_cache) "--no-cache",
             path)
   ok <- system2("docker", args)
