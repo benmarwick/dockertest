@@ -41,7 +41,7 @@ docker_build <- function(path, dockerfile, tagname, use_cache=TRUE) {
   ## steps down are we?  That becomes the build directory.  It's going
   ## to be ".." in many cases.
   args <- c("build",
-            "-f", dockerfile,
+             dockerfile,
             "-t", tagname,
             if (!use_cache) "--no-cache",
             path)
